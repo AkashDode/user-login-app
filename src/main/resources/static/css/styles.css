@@ -1,0 +1,119 @@
+/* ==========================================================================
+   User Login Application — custom styling layered on top of Bootstrap 5
+   ========================================================================== */
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.auth-card .card-body {
+    padding: 2.25rem 2rem;
+}
+
+.auth-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #2d3748;
+}
+
+.auth-subtitle {
+    color: #718096;
+    font-size: 0.92rem;
+    margin-bottom: 1.75rem;
+}
+
+.brand-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.65rem;
+}
+
+.btn-gradient:hover,
+.btn-gradient:focus {
+    background: linear-gradient(135deg, #5a6fd8, #684a94);
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.2);
+}
+
+.auth-footer-link {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.auth-footer-link a {
+    color: #667eea;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer-link a:hover {
+    text-decoration: underline;
+}
+
+/* Welcome page ---------------------------------------------------------- */
+.welcome-card {
+    width: 100%;
+    max-width: 520px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    text-align: center;
+}
+
+.welcome-card .card-body {
+    padding: 3rem 2rem;
+}
+
+.welcome-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1.25rem;
+    text-transform: uppercase;
+}
+
+.welcome-name {
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
