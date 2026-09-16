@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = "user-login-app"
+        TOMCAT_HOME = "/mnt/server/apache-tomcat-10.1.60"
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github-ssh',
+                    url: 'git@github.com:AkashDode/user-login-app.git'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh '''
+                    mvn test
+                '''
+            }
+        }
+
+        stage('Build WAR file') {
+            steps {
+                sh '''
+                    mvn clean package
+                '''
+            }
+        }
+
+        stage('Deploy WAR file') {
+            steps {
+                sh '''
+                    echo "Removing old deployment.."
+
+                    rm -rf $TOMCAT_HOME/webapps/user-login-app
+                    rm -f $TOMCAT_HOME/webapps/user-login-app.war
+
+                    echo "Deploying new WAR file"
+
+                    cp target/user-login-app.war \
+                       $TOMCAT_HOME/webapps/
+                '''
+            }
+        }
+
+        stage('Wait for Deployment') {
+            steps {
+                sh '''
+                    sleep 15
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                    echo "Checking deployed files..."
+
+                    ls -ltra $TOMCAT_HOME/webapps
+
+                    echo "Testing application URL..."
+
+                    curl -I http://localhost:8080/user-login-app/login
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "SUCCESS: Application deployed successfully"
+        }
+
+        failure {
+            echo "FAILED: Deployment failed"
+        }
+    }
+}
